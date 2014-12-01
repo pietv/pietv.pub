@@ -16,7 +16,7 @@ _n_ for 32 bit int or uint32 that can hold it would be _12_, and for uint64
 
 * math/big package
 
-Go has a [[http://godoc.org/math/big][`math/big`]] package which implements operations
+Go has a [[http://godoc.org/math/big][math/big]] package which implements operations
 on arbitrarily long integers.. It is very convenient using it to convert
 big ints to and from strings:
 
