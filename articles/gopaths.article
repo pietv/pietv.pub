@@ -65,7 +65,8 @@ and the above greps are not very pretty.
 
 * Web service version
 
-The version that uses [[http://godoc.org/net/http][net/http]] does pretty much
+[[https://github.com/pietv/gopaths/blob/master/cmd/gopaths/main.go][This version]] 
+that uses [[http://godoc.org/net/http][net/http]] does pretty much
 the same thing. It doesn't use the go list directly, though. It calls
 [[http://godoc.org/go/build#Context.SrcDirs][build.SrcDirs()]]
 for the list of root directories and applies
