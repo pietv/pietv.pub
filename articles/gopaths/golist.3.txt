@@ -1,0 +1,10 @@
+$ go list -f '{{.Dir}}' all
+/Users/peter/go/src/cmd/fix
+/Users/peter/go/src/cmd/go
+/Users/peter/go/src/cmd/gofmt
+/Users/peter/go/src/cmd/yacc
+/Users/peter/go/src/archive/tar
+/Users/peter/go/src/archive/zip
+/Users/peter/go/src/bufio
+/Users/peter/go/src/bytes
+...

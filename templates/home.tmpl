@@ -1,0 +1,6 @@
+{{define "title"}}pietv{{end}}
+{{define "content"}}
+        {{range .Data}}
+		{{template "doc" .}}
+	{{end}}
+{{end}}

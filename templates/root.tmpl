@@ -1,0 +1,91 @@
+{{define "root"}}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>{{template "title" .}}</title>
+	<link type="text/css" rel="stylesheet" href="resources/hyde.css">
+	<link type="text/css" rel="stylesheet" href="resources/poole.css">
+	<link type="text/css" rel="stylesheet" href="resources/pietv.css">
+	<link rel="alternate" type="application/atom+xml" title="pie tv - Atom Feed" href="//pietv.pub/feed.atom" />
+        <link href='http://fonts.googleapis.com/css?family=Rambla:400,700|Lora:400,700|PT+Mono&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+</head>
+
+<body class="theme-base-0d">
+
+<div class="sidebar">
+    <div class="container sidebar-sticky">
+	<div class="sidebar-about">
+		<h1 class="brand"><a href="{{.BasePath}}">pie tv</a></h1>
+		<div class="lead">Peter Vypov's blog on Go. Mostly</div>
+	</div>
+	<p><div><a class="sidebar-nav-item" href="{{.BasePath}}/index">Posts</a></div>
+        {{with .Doc}}
+        	<ul>
+		{{with .Newer}}
+			<li>Previous <a class="post-title"href="{{.Path}}">{{.Title}}</a></li>
+		{{end}}
+
+		{{with .Older}}
+			<li>Next <a class="post-title" href="{{.Path}}">{{.Title}}</a></li>
+		{{end}}
+		</ul>
+        {{else}}
+                <ul>
+	        {{range .Data}}
+                <li><a class="post-title" href="{{.Permalink}}">{{.Title}}</a></li>
+	        {{end}}
+	        </ul>
+        {{end}}
+	</p>
+	<div class="footnote">© 2014 Peter Vypov. All rights reserved.</div>
+   </div>
+</div>
+
+<div class="content">
+   <div class="post">
+	{{template "content" .}}
+   </div>
+</div>
+
+</body>
+        <script src="resources/jquery.js"></script>
+        <script src="resources/playground.js"></script>
+        <script src="resources/play.js"></script>
+        <script>
+        $(function() {
+	// Insert line numbers for all playground elements.
+	$('.playground > pre.numbers, .code > pre.numbers').each(function() {
+		var $spans = $(this).find('> span');
+
+		// Compute width of number column (including trailing space).
+		var max = 0;
+		$spans.each(function() {
+			var n = $(this).attr('num')*1;
+			if (n > max) max = n;
+		});
+		var width = 2;
+		while (max > 10) {
+			max = max / 10;
+			width++;
+		}
+
+		// Insert line numbers with space padding.
+		$spans.each(function() {
+			var n = $(this).attr('num')+' ';
+			while (n.length < width) n = ' '+n;
+			$('<span class="number">').text(n).insertBefore(this);
+		});
+	});
+
+	initPlayground(new SocketTransport());
+});
+</script>
+</html>
+{{end}}
+
+{{define "doc"}}
+	<h3 class="post-title"><a href="{{.Path}}">{{.Title}}</a></h3>
+	<p class="post-date">{{.Time.Format "2 January 2006"}}</p>
+	{{.HTML}}
+{{end}}

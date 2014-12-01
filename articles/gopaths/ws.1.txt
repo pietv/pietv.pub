@@ -1,0 +1,2 @@
+export GOPATHSADDR=:6118
+gopaths -http=$GOPATHSADDR 2>/dev/null &

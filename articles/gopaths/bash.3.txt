@@ -1,0 +1,7 @@
+[~/go/src]$ g blog
+1) /Users/peter/src/code.google.com/p/go.blog/blog
+2) /Users/peter/src/github.com/campoy/blog/blog
+3) /Users/peter/src/golang.org/x/tools/blog
+
+[~/go/src]$ g tools/blog
+[~/src/golang.org/x/tools/blog]$

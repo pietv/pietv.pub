@@ -1,0 +1,105 @@
+html, .sidebar-nav {
+	font-family: "Lora", "Newton", "Times New Roman", serif;
+}
+
+html {
+	font-size: 18px;
+}
+
+li {
+	padding: 5px;
+}
+
+code,
+pre {
+	font-family: "PT Mono", "Ubuntu Mono", "Consolas", monospace;
+	font-size: 16px;
+}
+
+code {
+	padding: .10em .4em;
+	font-size: 90%;
+	color: indianred;
+}
+
+.brand, .lead {
+	font-family: "Rambla", "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.sidebar-nav,
+.sidebar-nav-about,
+.sidebar-nav-item {
+  color: #fff;
+}
+
+.sidebar-about h1 {
+  color: #fff;
+  margin-top: 0;
+  font-size: 3.25rem;
+}
+
+.lead {
+	font-weight: 700;
+	font-size: 16px;
+	color: #000;
+}
+
+.content {
+	line-height: 50%;
+}
+
+.post {
+	line-height: 150%;
+}
+
+.post-title a {
+	font-family: "Lora", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.post-date {
+	margin-top: 0.8rem;
+}
+
+pre {
+	margin: 20px;
+	background: #ddd;
+	padding: 15px;
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+div.code,
+div.output {
+	margin: 20px;
+	padding: 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+  background: #000;
+}
+
+div.output pre {
+  background: #000;
+}
+div.code,
+div.code pre {
+	background: #ddd;
+  color: #008;
+}
+
+div.output .stdout { color: #999; }
+div.output .stderr { color: rgb(244, 74, 63); }
+div.output .system { color: rgb(255, 209, 77) }
+
+.buttons {
+	margin-left: 15px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+div.output .buttons {
+	margin-left: 0;
+	margin-bottom: 15px;
+}
+

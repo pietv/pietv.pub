@@ -1,0 +1,83 @@
+Find open tags in HTML
+21 Oct 2014
+Tags: html regexp parsing
+
+Peter Vypov
+
+* The problem
+
+Finding opening HTML tags in an HTML document is a common interview question and
+a brain teaser, so it pays off to know how to do it quickly. The question is
+so common that there's juicy rant about it.
+
+The proper answer on “how would you find tags from in an HTML document
+using a regular expression?” should be “I'd rather not”, of course, because
+regular expressions don't really fit for the purpose.
+
+Go language has an excellent HTML parser [[http://godoc.org/golang.org/x/net/html][x/net/html]]
+that supports the [[http://www.w3.org/TR/html5/][HTML5]] standard,
+so there's no reason not to use that.
+
+But still, occasionally, it might be useful to use regexps if the solution is
+going to be quick and dirty and you're going to throw it away soon. It's important
+to know the limitations, though.
+
+* Simple solution
+
+        (?Us:<[^/>].*>)
+
+Here, the `(?Us:<re>)` is a regexp engine [[http://godoc.org/regexp/syntax][flags]]
+construct: *U* means non-greedy search and *s* — multi-line mode.
+
+.play htmltags/regexp1.go /^func main/,/^}$/
+
+The simple solution is almost excellent, unless you have _<_ or _>_ symbols
+in your attributes or between _<script></script>_ tags.
+
+.play htmltags/regexp1-bad.go /^func main/,/^}$/
+
+It can't also handle doubled angle brackets _<<_ well.
+
+* Better solution
+
+A better solution would be to use a regular expression that can parse
+quotes within attributes. This is a slightly modified version of an elaborate
+regexp taken from the
+[[http://www.amazon.com/Regular-Expressions-Cookbook-Jan-Goyvaerts/dp/1449319432/ref=sr_1_1?ie=UTF8&qid=1417028252&sr=8-1&keywords=regular+expressions+cookbook][“Regular Expressions Cookbook”]].
+It is modified to accomodate Go language's regexps flavor, and to allow whitespace
+before tag names (which is invalid HTML, but I want to have it all the same).
+
+        (?s:<(\s*[^/][^\s>]*)(=\s*("[^"]*"|'[^']*'|[^\s>]+)|[^>])*(>|$))⁣
+
+.code htmltags/re.txt
+
+This regexp works very well for every case of unescaped angle
+brackets in attributes. Unfortunately, it still doesn't handle them within text and
+between _<script></script>_ tags. Unescaped _<_ and _>_ within text is illegal HTML,
+but within _<script>_ and _<style>_ tags it is not.
+
+.play htmltags/regexp2-bad.go /^func main/,/^}$/
+
+* Special treatment of <script> and <style>
+
+Adding a small piece to the above regexp that eats up all the contents between
+_<script>_ and _</script>_ does the trick:
+
+.play htmltags/regexp3.go /^func main/,/^}$/
+
+* HTML Parser
+
+Now, back to the parser solution. This is actually easier to implement and to comprehend.
+It handles both the unescaped angle brackets within text and _<script>_ tags
+Also, it works faster (regular expression engine is a compiler by itself, isn't it).
+
+This solution does have a few quirks though: you need to specify the full list of
+[[http://godoc.org/golang.org/x/net/html#TokenType][token types]] you want to have
+in the output: it doesn't treat comments and doctypes as tags.
+Also it doesn't recognize <⁣ br > as a tag either. So, you have slightly less
+control with the parser.
+
+.play htmltags/html.go /^func main/,/^}$/
+
+
+

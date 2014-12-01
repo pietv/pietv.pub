@@ -1,0 +1,93 @@
+Using go list to change directories
+19 Nov 2014
+Tags: shell automation http
+
+Peter Vypov
+
+* go list
+
+go list is a Go tool command that can can quickly tell you the package name
+in the current directory, as well as many other details about the package.
+Its imports, for example
+
+.code gopaths/golist.1.txt
+
+or dependencies:
+
+.code gopaths/golist.2.txt
+
+There's [[http://dave.cheney.net/2014/09/14/go-list-your-swiss-army-knife][blog post]]
+by Dave Cheney about this tool, very worth reading.
+
+Anyway, using it, you can get details not only about specific package,
+but all the packages installed on the system under the GOROOT and GOPATH directories:
+
+.code gopaths/golist.3.txt
+
+It is tempting to use this information as an index to navigate between the
+package directories. Without needing to type the full name of all the github
+and bitbucket prefixes and having to update the CDPATH shell variable regularly.
+
+Using the go list as it is + grep is not an option. It doesn't generate that
+list instantaneously:
+
+.code gopaths/golist.4.txt
+
+So you need to cache the results somewhere.
+
+* Bash solution
+
+My first version saved directory names along with import paths in a temporary
+file.
+
+Import paths are for the [[http://godoc.org/golang.org/x/tools/cmd/godoc][godoc]]
+utility, and for the same reason: so that you don't need to type the whole
+_golang.org/x/tools/present_ instead of just _present_ to read some docs.
+
+Then you cut the list in two (2 fields per line: package and directory)
+and use grep on the result.
+
+.code gopaths/bash.1.txt
+
+Subdirectory matches are for convenience: if nothing has been found for
+a certain path, try a subdirectory instead. Grep matches against the
+end of the full path (with `$` at the end).
+
+Then, if there's only one match, apply a command to it (cd or godoc). If there
+are many matches, use bash's select to allow to choose from a list. So you could
+type next time a slightly longer path and be there right away.
+
+.code gopaths/bash.3.txt
+
+That's basically it. Worked very well for me for some time. It worried me though
+that it didn't look very clean: it left temp files in my /tmp directory
+and the above greps are not very pretty.
+
+* Web service version
+
+The version that uses [[http://godoc.org/net/http][net/http]] does pretty much
+the same thing. It doesn't use the go list directly, though. It calls
+[[http://godoc.org/go/build#Context.SrcDirs][build.SrcDirs()]]
+for the list of root directories and applies
+[[http://godoc.org/go/build#Context.ImportDir][build.ImportDir()]]
+on each found, which yields a [[http://godoc.org/go/build#Package][build.Package]]
+structure with all the package details: the same ones that go list uses.
+
+.code gopaths/ws.1.txt
+
+It starts by indexing Go packages and stays in memory servicing the
+HTTP requests, occasionally self-updating. The type of request is specified
+by a path prefix:
+
+.code gopaths/ws.2.txt
+
+After that, it can be wrapped in bash. I use the *g* alias for walking around,
+*d* for documentation, and *s* for documentation with sources:
+
+.code gopaths/ws.3.txt
+
+Looks neater because it doesn't use temp files and you have more control
+on the filtering logic (exclude directories from showing up, etc.)
+
+
+

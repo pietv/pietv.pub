@@ -1,0 +1,6 @@
+[~/go/src/math/rand]$ go list -f '{{range .Deps}}{{println .}}{{end}}'
+math
+runtime
+sync
+sync/atomic
+unsafe

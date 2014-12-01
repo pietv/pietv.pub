@@ -1,0 +1,7 @@
+$ curl -s :6118/dirs/rand
+/Users/peter/go/src/crypto/rand
+/Users/peter/go/src/math/rand
+
+$ curl -s :6118/imports/rand
+crypto/rand
+math/rand

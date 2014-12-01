@@ -1,0 +1,59 @@
+function g {
+        if [ -z "$1" ]; then
+                cd $GOROOT/src
+                return
+        fi
+        _search_gopaths "cd" "$1"
+}
+
+function d {
+        case "$1" in
+        ""|.)
+                doc .
+                return;;
+        esac
+        _search_gopaths "doc" "$1"
+}
+
+function s {
+        case "$1" in
+        ""|.)
+                docsrc .
+                return;;
+        esac
+        _search_gopaths "docsrc" "$1"
+}
+
+function _single_line {
+        [ ! -z "$1" -a $(echo "$1"|wc -l) -eq 1 ]
+}
+
+function _search_gopaths {
+        COMMAND="$1"
+        SEARCH="$2"
+
+        case "$COMMAND" in
+        doc|docsrc)
+                MATCH=$(curl -s $GOPATHSADDR/imports/"$SEARCH");;
+        *)
+                MATCH=$(curl -s $GOPATHSADDR/dirs/"$SEARCH");;
+        esac
+
+        if _single_line "$MATCH"; then
+                "$COMMAND" $MATCH
+                return
+        fi
+
+        select dir in $(echo "$MATCH"); do
+                "$COMMAND" $dir
+                break
+        done
+}
+
+function doc {
+        godoc -v -ex $*|less
+}
+
+function docsrc {
+        godoc -v -ex -src $*|less
+}

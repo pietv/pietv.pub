@@ -1,0 +1,42 @@
+pre {
+	margin: 20px;
+	background: #ddd;
+	padding: 15px;
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+div.code,
+div.output {
+	margin: 20px;
+	padding: 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+        background: #000;
+}
+
+div.output pre {
+        background: #000;
+}
+div.code,
+div.code pre {
+	background: #ddd;
+        color: #008;
+}
+
+div.output .stdout { color: #999; }
+div.output .stderr { color: rgb(244, 74, 63); }
+div.output .system { color: rgb(255, 209, 77) }
+
+.buttons {
+	margin-left: 15px;
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+div.output .buttons {
+	margin-left: 0;
+	margin-bottom: 15px;
+}

@@ -1,0 +1,8 @@
+export GOLIST=$(mktemp -q /tmp/go-list.XXXX)
+$(go list -f '{{.Dir}} {{.ImportPath}}' all >$GOLIST &)
+
+
+# Directories / Packages
+MATCH1=$(cut -d' ' -f$FIELD $GOLIST|egrep -w ${SEARCH}$)
+# Subdirectories / Subpackages
+MATCH2=$(_parent_dirs "$(cut -d' ' -f$FIELD $GOLIST)"|egrep -w ${SEARCH}$)

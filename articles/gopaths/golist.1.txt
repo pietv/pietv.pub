@@ -1,0 +1,3 @@
+[~/go/src/math/rand]$ go list -f '{{range .Imports}}{{println .}}{{end}}'
+math
+sync

@@ -1,0 +1,2 @@
+$ /usr/bin/time go list all >/dev/null
+2.76 real         1.05 user         0.78 sys

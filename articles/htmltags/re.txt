@@ -1,0 +1,18 @@
+(?s:                    # Multi-line match
+  <                     # Opening bracket
+  (
+    \s*                 # Empty whitespace between tag name
+    [^/]                # Permit opening tags only
+    [^\s>/]*            # Capture the tag name
+  )
+  (
+    = \s*               # Start of an attribute value
+    (
+      "[^"]*" |         # Double-quoted attribute value
+      '[^']*' |         # Single-quoted attribute value
+      [^\s>]+           # Unquoted attribute value
+    )
+    | [^>]              # Character outside of an attribute value
+  )*
+  (>|$)                 # Closing bracket or end-of-file.
+)
