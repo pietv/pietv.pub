@@ -94,7 +94,7 @@ div.output .stderr { color: rgb(244, 74, 63); }
 div.output .system { color: rgb(255, 209, 77) }
 
 .buttons {
-	margin-left: 15px;
+	margin-left: 25px;
 	margin-top: 10px;
 	margin-bottom: 20px;
 }
