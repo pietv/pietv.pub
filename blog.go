@@ -61,8 +61,6 @@ func main() {
 		log.Fatalf("%v\n", err)
 	}
 
-	fmt.Println(ln.Addr().(*net.TCPAddr).IP.IsUnspecified())
-
 	origin := &url.URL{Scheme: "http"}
 	if *originFlag != "" {
 		origin.Host = net.JoinHostPort(*originFlag, port)
