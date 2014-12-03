@@ -1,7 +1,7 @@
 (?s:                    # Multi-line match
   <                     # Opening bracket
   (
-    \s*                 # Empty whitespace between tag name
+    \s*                 # Empty whitespace between the tag name
     [^/]                # Permit opening tags only
     [^\s>/]*            # Capture the tag name
   )
