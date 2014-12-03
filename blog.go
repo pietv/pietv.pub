@@ -20,8 +20,8 @@ const (
 )
 
 var (
-	httpFlag   = flag.String("http", "localhost:8080", "HTTP Listen Address")
-	originFlag = flag.String("origin", "", "web socket origin URL for playground (e.g. localhost)")
+	httpFlag   = flag.String("http", "localhost:8080", "HTTP listen address")
+	originFlag = flag.String("origin", "", "web socket origin for Go Playground (e.g. localhost)")
 	baseFlag   = flag.String("base", "", "base path for articles and resources")
 )
 
@@ -29,9 +29,10 @@ func main() {
 	flag.Parse()
 
 	if *baseFlag == "" {
+		// By default, the base is the blog package location.
 		p, err := build.Default.Import(packagePath, "", build.FindOnly)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Couldn't find blog package: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Couldn't find the blog package: %v\n", err)
 			os.Exit(1)
 		}
 		*baseFlag = p.Dir
@@ -64,9 +65,6 @@ func main() {
 	origin := &url.URL{Scheme: "http"}
 	if *originFlag != "" {
 		origin.Host = net.JoinHostPort(*originFlag, port)
-	} else if ln.Addr().(*net.TCPAddr).IP.IsUnspecified() {
-		name, _ := os.Hostname()
-		origin.Host = net.JoinHostPort(name, port)
 	} else {
 		origin.Host = *httpFlag
 	}
