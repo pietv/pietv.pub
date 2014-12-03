@@ -65,12 +65,12 @@ and the above greps are not very pretty.
 
 * Web service version
 
-[[https://github.com/pietv/gopaths/blob/master/cmd/gopaths/main.go][This version]] 
-that uses [[http://godoc.org/net/http][net/http]] does pretty much
+[[https://github.com/pietv/gopaths/blob/master/cmd/gopaths/main.go][This version]], 
+that uses [[http://godoc.org/net/http][net/http]], does pretty much
 the same thing. It doesn't use the go list directly, though. It calls
-[[http://godoc.org/go/build#Context.SrcDirs][build.SrcDirs()]]
+[[http://godoc.org/go/build#Context.SrcDirs][build.SrcDirs]]
 for the list of root directories and applies
-[[http://godoc.org/go/build#Context.ImportDir][build.ImportDir()]]
+[[http://godoc.org/go/build#Context.ImportDir][build.ImportDir]]
 on each found, which yields a [[http://godoc.org/go/build#Package][build.Package]]
 structure with all the package details: the same ones that go list uses.
 

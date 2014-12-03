@@ -55,7 +55,7 @@ func main() {
 		Hostname:     host,
 		HomeArticles: 4,
 		FeedArticles: 4,
-		FeedTitle:    "FeedAtom",
+		FeedTitle:    "Pie TV",
 		PlayEnabled:  true,
 	})
 	if err != nil {

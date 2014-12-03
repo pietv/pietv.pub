@@ -75,7 +75,7 @@ Also, it works faster (regular expression engine is a compiler by itself, isn't 
 This solution does have a few quirks though: you need to specify the full list of
 [[http://godoc.org/golang.org/x/net/html#TokenType][token types]] you want to have
 in the output: it doesn't treat comments and doctypes as tags.
-Also it doesn't recognize <⁣ br > as a tag either. So, you have slightly less
+Also it doesn't recognize <⁣ _br_ > as a tag either. So, you have slightly less
 control with the parser.
 
 .play htmltags/html.go /^func main/,/^}$/
