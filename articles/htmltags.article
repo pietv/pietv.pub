@@ -9,7 +9,7 @@ Peter Vypov
 Finding opening HTML tags in an HTML document is a common interview question and
 a brain teaser, so it pays off to know how to do it quickly. The question is
 so common that there's [[http://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags/1732454#1732454][juicy rant]]
-out there about it.
+about it.
 
 The proper answer on “how would you find tags from in an HTML document
 using a regular expression?” should be “I'd rather not”, of course, because
