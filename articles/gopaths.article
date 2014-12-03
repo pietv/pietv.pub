@@ -65,7 +65,7 @@ and the above greps are not very pretty.
 
 * Web services version
 
-[[https://github.com/pietv/gopaths/main.go][This version]], 
+[[https://github.com/pietv/gopaths/blob/master/main.go][This version]], 
 that uses [[http://godoc.org/net/http][net/http]], does pretty much
 the same thing. It doesn't use the go list directly, though. It calls
 [[http://godoc.org/go/build#Context.SrcDirs][build.SrcDirs]]
