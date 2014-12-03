@@ -71,7 +71,7 @@ func main() {
 		origin.Host = *httpFlag
 	}
 
-	http.Handle("/resources/", http.FileServer(http.Dir(".")))
+	http.Handle("/resources/", http.FileServer(http.Dir(*baseFlag)))
 	http.Handle("/socket", socket.NewHandler(origin))
 	http.Handle("/", srv)
 	log.Fatal(http.Serve(ln, nil))
