@@ -19,10 +19,10 @@ func main() {
                 </script>`
 
 	r := regexp.MustCompile(
-                `(?s:(<style>|<script>).+</(style|script)>|` + 
-                `<(\s*[^/][^\s>]*)(=\s*("[^"]*"|'[^']*'|[^\s>]+)|[^>])*(>|$))`)
+		`(?s:(<style>|<script>).+</(style|script)>|` + 
+		`<(\s*[^/][^\s>]*)(=\s*("[^"]*"|'[^']*'|[^\s>]+)|[^>])*(>|$))`)
 	
-        for _, submatch := range r.FindAllStringSubmatch(text, -1) {
+	for _, submatch := range r.FindAllStringSubmatch(text, -1) {
 		switch {
 		// <script> and <style>.
 		case submatch[1] != "":

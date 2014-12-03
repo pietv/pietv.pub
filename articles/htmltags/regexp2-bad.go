@@ -7,9 +7,7 @@ import (
 )
 
 func main() {
-	text := `<body>Text "..." '...' "<><><" '><><'
-		<input type="button" onclick="alert(2>1)">
-		</body>
+	text := `<input type="button" onclick="alert(2>1)">
 		<a href="www<>.exa<mple.com"target="_>blank"></a>
 		<script>
 		function text(node) {

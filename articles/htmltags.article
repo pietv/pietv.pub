@@ -8,7 +8,8 @@ Peter Vypov
 
 Finding opening HTML tags in an HTML document is a common interview question and
 a brain teaser, so it pays off to know how to do it quickly. The question is
-so common that there's juicy rant about it.
+so common that there's [[http://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags/1732454#1732454][juicy rant]]
+out there about it.
 
 The proper answer on “how would you find tags from in an HTML document
 using a regular expression?” should be “I'd rather not”, of course, because
@@ -44,7 +45,7 @@ A better solution would be to use a regular expression that can parse
 quotes within attributes. This is a slightly modified version of an elaborate
 regexp taken from the
 [[http://www.amazon.com/Regular-Expressions-Cookbook-Jan-Goyvaerts/dp/1449319432/ref=sr_1_1?ie=UTF8&qid=1417028252&sr=8-1&keywords=regular+expressions+cookbook][“Regular Expressions Cookbook”]].
-It is modified to accomodate Go language's regexps flavor, and to allow whitespace
+It is modified to accommodate Go language's regexps flavor, and to allow whitespace
 before tag names (which is invalid HTML, but I want to have it all the same).
 
         (?s:<(\s*[^/][^\s>]*)(=\s*("[^"]*"|'[^']*'|[^\s>]+)|[^>])*(>|$))⁣
