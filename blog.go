@@ -31,7 +31,7 @@ func main() {
 	if *baseFlag == "" {
 		p, err := build.Default.Import(packagePath, "", build.FindOnly)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Couldn't find blog resources in: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Couldn't find blog package: %v\n", err)
 			os.Exit(1)
 		}
 		*baseFlag = p.Dir
