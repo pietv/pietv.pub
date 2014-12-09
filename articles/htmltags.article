@@ -62,7 +62,7 @@ but within _<script>_ and _<style>_ tags it is not.
 * Special treatment of <script> and <style>
 
 Adding a small piece to the above regexp that eats up all the contents between
-_<script>_ and _</script>_ does the trick:
+_<script>_ and _</script>_, as well as HTML comments does the trick:
 
 .play htmltags/regexp3.go /^func main/,/^}$/
 

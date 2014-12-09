@@ -1,0 +1,29 @@
+Two template tricks
+9 Dec 2014
+Tags: templates tricks
+
+Peter Vypov
+
+* Splitting a long line within template
+
+Templates don't support _line_ _continuation_ like bash does, for example.
+So if you put a _pipeline_ on a new line, that new line symbol will appear
+in the output. Sometimes you don't want that, and having a very long 
+line within a template looks ugly: 
+
+.play template-tricks/template1.go
+
+One way to rearrange this is to split that line into several parts.
+With a new template for each part:
+
+.play template-tricks/template2.go /^const/,/^}/
+
+* Func helpers as global variables
+
+If you want to add data to your template, but you don't want to add 
+it to the Execute call, you can create a helper function
+with the contents of that variable. It will be available in the main 
+and nested templates alike.
+
+.play template-tricks/template3.go /^const/,/^//\ OMIT/
+

@@ -1,0 +1,19 @@
+Quiz: min function one-liner
+5 Dec 2014
+Tags: quiz
+
+Peter Vypov
+
+* Dave Cheney's quiz:
+
+.html minoneline/twitter.html 
+
+By adding _only_ _one_ _line_ can you make it print the correct answer?
+
+.play minoneline/quiz.go
+
+* Solution
+
+I used a bit hack. Works for both 32 and 64 bit ints.
+
+.play -edit minoneline/solution.go
