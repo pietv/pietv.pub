@@ -17,6 +17,6 @@ const ExampleTmpl = `
 
 func main() {
 	template.Must(template.New("Example").
-                Parse(ExampleTmpl)).
-                ExecuteTemplate(os.Stdout, "Main", nil)
+		Parse(ExampleTmpl)).
+		ExecuteTemplate(os.Stdout, "Main", nil)
 }
