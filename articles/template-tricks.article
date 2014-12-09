@@ -4,9 +4,9 @@ Tags: templates tricks
 
 Peter Vypov
 
-* Splitting a long line within template
+* Splitting a long line within a template
 
-Templates don't support _line_ _continuation_ like bash does, for example.
+Templates don't support _line_ _continuation_ like Bash does, for example.
 So if you put a _pipeline_ on a new line, that new line symbol will appear
 in the output. Sometimes you don't want that, and having a very long 
 line within a template looks ugly: 
