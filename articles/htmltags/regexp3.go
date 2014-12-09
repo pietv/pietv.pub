@@ -10,6 +10,7 @@ func main() {
                 <input type="button" onclick="alert(2>1)">
                 </body>
                 <a href="www<>.exa<mple.com"target="_>blank"></a>
+                <!-- tttt -->
                 <script>
                 function text(node) {
                         for (var i = 0; i < node.childNodes.length; i++) {
@@ -19,7 +20,7 @@ func main() {
                 </script>`
 
 	r := regexp.MustCompile(
-		`(?s:(<style>|<script>).+</(style|script)>|` + 
+		`(?s:<!--.+-->|(<style>|<script>).+</(style|script)>|` + 
 		`<(\s*[^/][^\s>]*)(=\s*("[^"]*"|'[^']*'|[^\s>]+)|[^>])*(>|$))`)
 	
 	for _, submatch := range r.FindAllStringSubmatch(text, -1) {
