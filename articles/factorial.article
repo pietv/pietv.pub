@@ -35,7 +35,7 @@ which calculates the factorials up to 255:
 
 .code factorial/factorial.go /^var fstrings/,/^}/
 
-The table of factorials up to 255 weighs about 64K. This table could then be
+The table of factorials up to 255 takes up about 64K. This table could then be
 used in a module as a static variable, or converted at startup to a slice of
 _big.Int_ and provided as a function, which I like better:
 
