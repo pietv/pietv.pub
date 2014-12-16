@@ -62,7 +62,7 @@ pre {
   color: rgba(255,255,255,.5);
   background-color: #300030;
 }
-@media (min-width: 48rem) {
+@media (min-width: 64rem) {
   .sidebar {
     position: fixed;
     top: 0;
@@ -115,7 +115,7 @@ a.sidebar-nav-item:focus {
  * contents to the bottom of the sidebar in tablets and up.
  */
 
-@media (min-width: 48rem) {
+@media (min-width: 64rem) {
   .sidebar-sticky {
     position: absolute;
     right:  1rem;
@@ -147,21 +147,9 @@ a.sidebar-nav-item:focus {
   }
 }
 
-
-@media (min-width: 48rem) {
-  .content {
-    max-width: 46 rem;
-    margin-left: 18rem;
-    margin-right: 2rem;
-  }
-  ul {
-    list-style-type: disc;
-  }
-}
-
 @media (min-width: 64rem) {
   .content {
-    max-width: 60rem;
+    max-width: 62rem;
     margin-left: 18rem;
     margin-right: 2rem;
   }
@@ -193,32 +181,6 @@ a.sidebar-nav-item:focus {
   font-size: 4.0em;
   margin-bottom: 0;
 }
-
-/*
- * Reverse layout
- *
- * Flip the orientation of the page by placing the `.sidebar` on the right.
- */
-
-@media (min-width: 48rem) {
-  .layout-reverse .sidebar {
-    left: auto;
-    right: 0;
-  }
-  .layout-reverse .content {
-    margin-left: 2rem;
-    margin-right: 20rem;
-  }
-}
-
-@media (min-width: 64rem) {
-  .layout-reverse .content {
-    margin-left: 4rem;
-    margin-right: 22rem;
-  }
-}
-
-
 
 /*
  * Themes
